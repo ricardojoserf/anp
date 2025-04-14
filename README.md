@@ -13,7 +13,7 @@ The logging structure is:
 The default path is "C:\Windows\Task\default.txt" but you can customize it using the macro /DFILE_PATH:
 
 ```
-cl /LD /DFILE_PATH=\"C:\\\\Users\\\\ricardo\\\\Desktop\\\\custom_path.txt\" 1_textfile_base64.c crypt32.lib /link /OUT:anp.dll
+cl /LD /DFILE_PATH=\"C:\\\\Windows\\\\Tasks\\\\custom_path.txt\" 1_textfile_base64.c crypt32.lib /link /OUT:anp.dll
 ```
 
 This creates a file with a content similar to:
@@ -60,6 +60,19 @@ And you get:
 {"timestamp":"2025-04-14 11:20:18","operation":"PWD_UPDATE_OLD","domain":"DESKTOP-0N6G696","username":"ricardo","password":"qq"}
 {"timestamp":"2025-04-14 11:20:18","operation":"PWD_UPDATE_NEW","domain":"DESKTOP-0N6G696","username":"ricardo","password":"q"}
 ```
+
+<br>
+
+## 3. Send to webhook + Base64-encoding
+
+
+<br>
+
+## 4. Send to webhook + AES-encryption
+
+
+
+<br>
 
 --------------------
 
