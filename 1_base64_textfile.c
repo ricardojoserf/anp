@@ -1,6 +1,5 @@
 #include <windows.h>
 #include <wincrypt.h>
-#include <wininet.h>
 #include <stdio.h>
 
 #define WNNC_SPEC_VERSION                0x00000001
