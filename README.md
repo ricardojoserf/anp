@@ -86,6 +86,19 @@ cl /LD /DWEBHOOK_URL=L\"https://...\" /DAES_PWD=\"TEST1234\" 4_webhook_aes.c cry
 
 <br>
 
+## 5. DNS exfiltration + Base64-encoding
+
+There is not a default webhook url, you have to set the value using the macro /DSUBDOMAIN:
+
+```
+cl /LD /DSUBDOMAIN=\".sub.domain.com\" 5_dns_base64.c crypt32.lib /link /OUT:test.dll
+```
+
+Check [this repository](https://github.com/ricardojoserf/dns-exfiltration) for creating the necessary subdomains.
+
+
+<br>
+
 --------------------
 
 ## Installation
