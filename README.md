@@ -13,7 +13,7 @@ The logging structure is:
 The default path is "C:\Windows\Task\default.txt" but you can customize it using the macro /DFILE_PATH:
 
 ```
-cl /LD /DFILE_PATH=\"C:\\\\Users\\\\ricardo\\\\Desktop\\\\custom_path.txt\" 1_base64_textfile.c crypt32.lib /link /OUT:anp.dll
+cl /LD /DFILE_PATH=\"C:\\\\Users\\\\ricardo\\\\Desktop\\\\custom_path.txt\" 1_textfile_base64.c crypt32.lib /link /OUT:anp.dll
 ```
 
 This creates a file with a content similar to:
