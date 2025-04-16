@@ -4,9 +4,12 @@ import hashlib
 from Crypto.Cipher import AES
 from Crypto.Util.Padding import unpad
 
-password = b"TEST1234"
+# Use second argument as password if provided, else default to TEST1234
+password_str = sys.argv[2] if len(sys.argv) > 2 else "TEST1234"
+password = password_str.encode()
 key = hashlib.sha256(password).digest()
 
+# First argument is the Base64-encoded ciphertext
 encrypted_b64 = sys.argv[1]
 
 # Step 1: Decode Base64
