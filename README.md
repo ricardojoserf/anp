@@ -1,6 +1,6 @@
 # anp
 
-These are tests to create Network Providers based on [NPPSpy2](https://github.com/gtworek/PSBits/tree/master/PasswordStealing/NPPSpy2) by [gtworek](https://github.com/gtworek). All credit goes to the original author - I'm simply adding some functionality to explore what works best, but I thought it could be interesting for someone so I made it public.
+These programs are tests to create Network Providers based on [NPPSpy2](https://github.com/gtworek/PSBits/tree/master/PasswordStealing/NPPSpy2) by [gtworek](https://github.com/gtworek). All credit goes to the original author - I'm simply adding some functionality to explore what works best for me, but I thought it could be interesting for someone so I decided to make it public :)
 
 I will use Base64-encoding or AES-encryption in all examples with the following JSON-like structure to store the information: 
 
@@ -170,4 +170,4 @@ You can follow the instructions in [NPPSpy](https://github.com/gtworek/PSBits/tr
 
 ## References
 
-- [NPPSpy2](https://github.com/gtworek/PSBits/tree/master/PasswordStealing/NPPSpy2) by [gtworek](https://github.com/gtworek) - Again, these are just adding other exfiltration to NPPSpy(2).
+- [NPPSpy2](https://github.com/gtworek/PSBits/tree/master/PasswordStealing/NPPSpy2) by [gtworek](https://github.com/gtworek) - Again, these are just adding other exfiltration to NPPSpy(2) code.
