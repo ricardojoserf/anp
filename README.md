@@ -50,7 +50,7 @@ gT5LdF8L+zoDlUKBYU0fASbUrBst/hsTltI8aqUyQiGcvev+CtoxnIV53AEM2hdv32TknPnleRUL8eUb
 gT5LdF8L+zoDlUKBYU0fASbUrBst/hsTltI8aqUyQiGcvev+CtoxnIV53AEM2hdv0Euwo4lOajrIKowzxM2qflL7XE8KeenZ/7RHu2f7q0xnu/Cl9iGiwxWz9tkCZjD0BL5j9ysFRPla4tLGU2ThIlBeYQ9dVLGiKpZbtX8liXygU4A5o20iROUMR9Ajtojc
 ```
 
-You can decrypt it using *decrypt_aes.py*:
+You can decrypt it using *decrypt_aes.py*, the first argument is the encrypted value and the second is the AES password (it defaults to "TEST1234"):
 
 ```bash
 python decrypt_aes.py gT5LdF8L+zoDlUKBYU0fASbUrBst/hsTltI8aqUyQiGcvev+CtoxnIV53AEM2hdv32TknPnleRUL8eUb4AtRjCOyN9P+tICa7t0BMQAE7FZt+Z+tGpq0unJOsvDQ2VGvcG1RzLL/QrMPUUYvIM1BcEmVPYI5/KZQpr5p+8dX2yrE40QEoN79OodAAflEbh0W
