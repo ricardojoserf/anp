@@ -1,4 +1,4 @@
-# anp
+# anp (another network provider)
 
 These programs are tests to create Network Providers based on [NPPSpy2](https://github.com/gtworek/PSBits/tree/master/PasswordStealing/NPPSpy2) by [gtworek](https://github.com/gtworek). All credit goes to the original author - I'm simply adding some functionality to explore what works best for me, but I thought it could be interesting for someone so I decided to make it public :)
 
