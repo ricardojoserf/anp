@@ -141,7 +141,6 @@ And the *decrypt_aes.py* script to decrypt the values:
 
 ## Installation
 
-
 You can follow the instructions in [NPPSpy](https://github.com/gtworek/PSBits/tree/master/PasswordStealing/NPPSpy) by [gtworek](https://github.com/gtworek), which can be summed up to:
 
 - Copy the DLL to a path in the compromised system.
@@ -155,4 +154,17 @@ You can follow the instructions in [NPPSpy](https://github.com/gtworek/PSBits/tr
   - ProviderPath = [REG_EXPAND_SZ]"C:\Users\ricardo\Desktop\test.dll" - Path to the DLL.
 
   - Name = [REG_SZ]"anp" - The name you chose, in this case I will use "anp".
+ 
+<br>
 
+--------------------
+
+## TO-DOs
+
+- Implement more exfiltration techniques (PRs are welcome!)
+
+--------------------
+
+## References
+
+- [NPPSpy2](https://github.com/gtworek/PSBits/tree/master/PasswordStealing/NPPSpy2) by [gtworek](https://github.com/gtworek) - Again, these are just adding other exfiltration to NPPSpy(2).
