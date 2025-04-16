@@ -170,4 +170,4 @@ You can follow the instructions in [NPPSpy](https://github.com/gtworek/PSBits/tr
 
 ## References
 
-- [NPPSpy2](https://github.com/gtworek/PSBits/tree/master/PasswordStealing/NPPSpy2) by [gtworek](https://github.com/gtworek) - Again, these are just adding other exfiltration to NPPSpy(2) code.
+- [NPPSpy2](https://github.com/gtworek/PSBits/tree/master/PasswordStealing/NPPSpy2) by [gtworek](https://github.com/gtworek) - Again, these programs are just adding some functionality to NPPSpy(2) code..
