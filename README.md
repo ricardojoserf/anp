@@ -1,4 +1,4 @@
-# Malicious Network Providers 
+# Malicious Network Provider DLLs 
 
 These programs are tests to create Network Providers based on [NPPSpy2](https://github.com/gtworek/PSBits/tree/master/PasswordStealing/NPPSpy2) by [gtworek](https://github.com/gtworek). All credit goes to the original author - I'm simply adding some functionality to explore what works best for me, but I thought it could be interesting for someone so I decided to make it public :)
 
@@ -175,8 +175,11 @@ You can follow the instructions in [NPPSpy](https://github.com/gtworek/PSBits/tr
 
 <br>
 
+
 --------------------
 
 ## References
 
-- [NPPSpy2](https://github.com/gtworek/PSBits/tree/master/PasswordStealing/NPPSpy2) by [gtworek](https://github.com/gtworek) - Again, these programs are just adding some functionality to NPPSpy(2) code.
+- [NPPSpy2](https://github.com/gtworek/PSBits/tree/master/PasswordStealing/NPPSpy2) by [gtworek](https://github.com/gtworek) - These programs are just adding some functionality to NPPSpy2 code, all credits to the author
+
+- [T1556.008: Network Provider DLL](https://attack.mitre.org/techniques/T1556/008/)
